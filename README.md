@@ -26,10 +26,11 @@ make run
 ### undefined404offical
 邮箱：w.sc.2022@outlook.com  
 QQ: 2480340196  
-
+B站：UID:3546599963756811
 ### McLDY（突发恶疾的李大爷）
 邮箱：mcldy00@outlook.com  
-QQ：3777426705
+QQ：3777426705  
+B站：UID:3546599963756811
 
 ### fyqcell（不爱写内核的哥们）
 邮箱：  
