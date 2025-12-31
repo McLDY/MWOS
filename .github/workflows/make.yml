@@ -1,0 +1,22 @@
+name: Build Project
+
+# 触发条件：当有代码 push 到任何分支，或提交 Pull Request 时
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential nasm clang llvm
+
+      - name: Run make
+        run: make
