@@ -21,3 +21,11 @@ jobs:
         run: |
             make clean
             make
+            
+      - name: Upload build results
+        uses: actions/upload-artifact@v4 # 确保使用 2025 年推荐的 v4 版本
+        with:
+          name: os-image          # 产物包的名字
+          path: build/disk.img    # 编译出的文件路径
+          retention-days: 30       # 自动保存天数
+
