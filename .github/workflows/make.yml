@@ -1,0 +1,41 @@
+name: Build Project
+
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential nasm clang llvm binutils mtools lld
+
+      - name: Run make
+        run: |
+            make clean
+            make
+      
+      - name: Get OVMF
+        run: |
+            curl -o OVMF.fd https://github.com/clearlinux/common/raw/refs/heads/master/OVMF.fd
+      
+      - name: Upload OS image
+        uses: actions/upload-artifact@v4
+        with:
+          name: os-image
+          path: build/disk.img
+          retention-days: 365
+      
+      - name: Upload OVMF firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: ovmf-firmware
+          path: OVMF.fd
+          retention-days: 365

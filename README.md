@@ -9,12 +9,28 @@
 `MTools`
 `Linker`
 `Objcopy`
+`OVMF`
 
 ### 在项目**根目录**下运行：
 ```bash
 make clean
 make
 ```
+
+### 不想自己编译/编译不了？
+在Actions里面找最新的Artifacts，下载即可。
+
+## 运行
+### 使用QEMU运行
+```bash
+qemu-system-x86_64 -m 1024 -drive file=os-image.img,format=raw -bios OVMF.fd -serial stdio 
+```
+替换`os-image`为你编译/下载的镜像
+替换`OVMF.fd`为你的OVMF
+**OVMF下载**
+`https://github.com/clearlinux/common/raw/refs/heads/master/OVMF.fd`
+或者在Actions里面找最新的Artifacts，下载即可
+
 
 ## 待办事项
 | 功能 | 状态 | 备注 |
@@ -25,13 +41,11 @@ make
 | 图形界面 | 待编写 | 需要一个WindowManager |
 | 内存管理 | 编写中 | 无 |
 | 磁盘操作 | 已完成 | 速度很慢，尤其是计算Free Space。只支持IDE控制器 |
-| 文件系统 | 已完成 | 只支持F16 |
+| 文件系统 | 已完成 | 只支持F32|
 | 键鼠驱动 | 已完成 | 只支持PS/2 |
 
-
-
 ## 联系方式
-### undefined404offical
+### undefined404offical（被李大爷颗秒的UD404）
 邮箱：w.sc.2022@outlook.com  
 QQ: 2480340196  
 B站：UID:3546599963756811
